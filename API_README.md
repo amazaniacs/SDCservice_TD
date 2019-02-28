@@ -1,7 +1,8 @@
 # CRUD API 
 
 # CREATE
-POST   /api/products
+```POST   
+/api/products
 
 Request:
 Content-Type: 'json/application'
@@ -36,10 +37,12 @@ status: 201 OK
 
 Error:
 status: 400 Bad Request
+```
 
 # READ
-
+PRODUCT INFO: 
 --For a single product 
+```
     GET    /api/products/:id
 
     id    :    Product's id. Type: Number
@@ -69,9 +72,10 @@ status: 400 Bad Request
 
     Errors:
     status: 404 Not Found
-
+```
 
 --For all products 
+```
     GET    /api/products
 
     Response:
@@ -105,9 +109,32 @@ status: 400 Bad Request
 
     Errors:
     status: 404 Not Found
+```
+REVIEWS:
+--All reviews for a certain product id
+```
+    GET    /api/productreview/:id
+
+    id    :    Product's id. Type: Number
+
+    Response:
+    status: 200 OK
+    {
+      "rating": Number,
+      "total_reviews": Number,
+      "no_one_start_reviews": Number,
+      "no_two_start_reviews": Number,
+      "no_three_start_reviews": Number,
+      "no_four_start_reviews": Number,
+      "no_five_start_reviews": Number,
+    }
+
+    Errors:
+    status: 404 Not Found
+```
 
 # UPDATE
-
+```
 PUT    /api/products/:id
 
 id    :    Product's id. Type: Number
@@ -133,8 +160,9 @@ Body:
   "is_prime": Boolean,
   "description": String
 }
+```
 ** All fields not needed, only put in the information to be updated
-
+```
 Response:
 status: 200 OK
 {
@@ -150,9 +178,11 @@ Returned data is the updated item.
 Errors:
 status: 204 No Content
 (can't find item to update)
+```
+PUT will replace the existing data with the newly provided data
 
 # DELETE
-
+```
 DELETE    /api/products/:id
 
 id    :    Product's id. Type: Number
@@ -162,3 +192,5 @@ status: 200 OK
 
 Error:
 status: 204 No Content
+```
+Delete action will remove the product with the given id from the database
